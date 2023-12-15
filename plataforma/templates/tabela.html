@@ -1,0 +1,151 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block head %}
+  <link rel="stylesheet" href="{% static 'plataforma/css/styles.css' %}">
+{% endblock head %}
+
+{% block header %}{% endblock header %}
+
+{% block container %}
+  <h3 class="m-4">Funcionarios</h3>
+    <div class="row">
+      <div class="col-12">
+          <div class="card bg-light ms-4 me-4 mb-4">
+            <div class="card-header">
+              <i class="fa-solid fa-list fa-lg"></i> Registro de Funcionario
+            </div>
+            <div class="card-body">
+              <p class="card-text">
+                <div class="table-responsive">
+                  <table class="table table-hover">
+                    <thead>
+                      <tr>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Setor</th>
+                        <th scope="col">Município</th>
+                        <th scope="col">Atividade</th>
+                        <th scope="col">Descrição da Atividade</th>
+                        <th scope="col">Data de Recepção</th>
+                        <th scope="col">Data de Inicio</th>
+                        <th scope="col">Data do Fim</th>
+                        <th scope="col">Duração de Dias</th>
+                        <th scope="col">Observação</th>
+                        <th scope="col">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Alex Pereira</td>
+                        <td>FNDE</td>
+                        <td>Pedro Avelino</td>
+                        <td>Prestação de Contas</td>
+                        <td>PPDE 2022 das escolas do município</td>
+                        <td>16/03/2023</td>
+                        <td>06/07/2023</td>
+                        <td>28/11/2023</td>
+                        <td>104</td>
+                        <td></td>
+                        <td>Concluído</td>
+                      </tr>
+                      <tr>
+                        <td>Anaise</td>
+                        <td>FNDE</td>
+                        <td>Touros</td>
+                        <td>Prestação de Contas</td>
+                        <td>PNAE 2022</td>
+                        <td>28/04/2023</td>
+                        <td>28/04/2023</td>
+                        <td></td>
+                        <td></td>
+                        <td>Está sendo lançado o mês de dezembro de 2022 no sistema</td>
+                        <td>Pendente</td>
+                      </tr>
+                      <tr>
+                        <td>Maryllia</td>
+                        <td>Receita Federal</td>
+                        <td>Rio do Fogo</td>
+                        <td>RFB - Parcelamento</td>
+                        <td>Formalização do parcelamento</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Ordem Cronologica</td>
+                        <td>Não iniciado</td>
+                      </tr>
+                      <tr>
+                        <td>Marta</td>
+                        <td>FTGS</td>
+                        <td>Tibau do Sul</td>
+                        <td>Individualizar</td>
+                        <td></td>
+                        <td>01/06/2023</td>
+                        <td>01/06/2023</td>
+                        <td></td>
+                        <td></td>
+                        <td>Aguardando documentos. Só veio extrato</td>
+                        <td>Pendente</td>
+                      </tr>
+                      <tr>
+                        <td>Cinthia</td>
+                        <td>CAIXA</td>
+                        <td>São Miguel do Gostoso</td>
+                        <td>Prestação de Contas</td>
+                        <td>SICONV</td>
+                        <td>27/10/2023</td>
+                        <td>30/10/2023</td>
+                        <td>05/11/2023</td>
+                        <td>5</td>
+                        <td>Enviar ao BJPREV</td>
+                        <td>Concluído</td>
+                      </tr>
+                      <tr>
+                        <td>Daniel Molick</td>
+                        <td>CAIXA</td>
+                        <td>Extremoz</td>
+                        <td>Prestação de Contas</td>
+                        <td>SICONV</td>
+                        <td>27/10/2023</td>
+                        <td>05/11/2023</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Em Analise</td>
+                      </tr>
+                      <tr>
+                        <td>Fátima</td>
+                        <td>Contabilidade</td>
+                        <td>Goianinha</td>
+                        <td>Auditoria</td>
+                        <td>Contabilidade dos centro de custos</td>
+                        <td>28/10/2023</td>
+                        <td>10/11/2023</td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>Em Analise</td>
+                      </tr>
+                      <tr>
+                        <td>Ingrid</td>
+                        <td>SIMEC</td>
+                        <td>Lagoa Salgada</td>
+                        <td>Envio de documento</td>
+                        <td>Documento para celebração</td>
+                        <td>30/10/2023</td>
+                        <td>15/12/2023</td>
+                        <td>15/12/2023</td>
+                        <td>1</td>
+                        <td></td>
+                        <td>Concluído</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </p>
+            </div>
+          </div>
+      </div>
+    </div>
+{% endblock container %}
