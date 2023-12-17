@@ -77,16 +77,17 @@
     padding-left: 70px;
 }
 
+
 .input_cadastrar_nome{
-
+    
     background-image: url('img/user.png');
-
+    
 }
 
 .input_cadastrar_senha{
-
+    
     background-image: url('img/senha.png');
-  
+    
 }
 
 .btn_cadastrar {
