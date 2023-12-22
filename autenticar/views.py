@@ -7,7 +7,7 @@ from django.contrib import auth
 from django.contrib.auth import authenticate, login as auth_login
 from django.contrib.auth import get_user_model
 from django.utils.crypto import get_random_string
-from .forms import PasswordResetRequestForm
+from .forms import PasswordResetRequestForm, CustomPasswordResetRequestForm, CustomSetPasswordForm
 from django.contrib.auth.forms import SetPasswordForm
 from django.contrib.auth.tokens import default_token_generator
 from django.contrib.auth.views import PasswordResetConfirmView
@@ -123,12 +123,7 @@ class PasswordResetConfirmView(View):
             user = None
 
         if user is not None and default_token_generator.check_token(user, token):
-            print(f'User ID: {uid}')
-            print(f'Token: {token}')
-            form = SetPasswordForm(user)
-            print(f'Form errors: {form.errors}')
-            # Antes de construir o formulário
-            print(f'check_token result: {default_token_generator.check_token(user, token)}')
+            form = CustomSetPasswordForm(user)
             return render(request, self.template_name, {'form': form, 'uidb64': uidb64, 'token': token})
         else:
             messages.add_message(request, constants.ERROR, 'O link de redefinição de senha é inválido ou expirou.')
@@ -142,7 +137,7 @@ class PasswordResetConfirmView(View):
             user = None
 
         if user is not None and default_token_generator.check_token(user, token):
-            form = SetPasswordForm(user, request.POST)
+            form = CustomSetPasswordForm(user, request.POST)
             if form.is_valid():
                 form.save()
                 messages.add_message(request, constants.SUCCESS, 'Senha alterada com sucesso. Faça login com a nova senha.')

@@ -1,17 +1,19 @@
 from django import forms
+from django.contrib.auth.forms import SetPasswordForm
+from .models import CustomUser
 
 
 class PasswordResetRequestForm(forms.Form):
     username = forms.CharField(
-        max_length=150,
-        widget=forms.TextInput(
-            attrs={
+        max_length = 150,
+        widget = forms.TextInput(
+            attrs = {
                 'class': 'form-control', 
                 'style': 'margin-top: 20px; width: 700px; display:initial;',
                 'placeholder': 'Digite seu nome de usuário',
             }
         ),
-        label='Usuario',
+        label = 'Usuario',
     )
 
     def __init__(self, *args, **kwargs):
@@ -26,10 +28,51 @@ class PasswordResetRequestForm(forms.Form):
     def as_div(self):
         """Customize a renderização do formulário para adicionar a classe 'form-label' à label."""
         return self._html_output(
-            normal_row='<div%(html_class_attr)s>%(label)s %(field)s%(help_text)s</div>',
-            error_row='<div%(html_class_attr)s>%s</div>',
+            normal_row='<div class="form-group">%(label)s %(field)s%(help_text)s</div>',
+            error_row='<div class="form-group errorlist">%s</div>',
             row_ender='</div>',
             help_text_html=' <span class="helptext">%s</span>',
             errors_on_separate_row=True,
         )
-    
+     
+        
+class CustomSetPasswordForm(SetPasswordForm):
+    def as_custom_form(self):
+        output = []
+        for name, bound_field in self.fields.items():
+            output.append('<div class="form-group">')
+            output.append('<label class="form-label mt-4" for="%s">%s:</label>' % (name, bound_field.label))
+
+            widget_input_type = getattr(bound_field.widget, 'input_type', None)
+            widget_attrs = ' '.join([f'{k}="{v}"' for k, v in bound_field.widget.attrs.items()])
+            output.append('<input class="form-control" type="%s" name="%s" %s />' % (
+                widget_input_type if widget_input_type else 'text',
+                name,
+                widget_attrs
+            ))
+
+            output.append('%s%s' % (bound_field, bound_field.help_text))
+            output.append('</div>')
+
+        return ''.join(output)
+
+
+class CustomPasswordResetRequestForm(PasswordResetRequestForm):
+    def as_custom_form(self):
+        output = []
+        for name, bound_field in self.fields.items():
+            output.append('<div class="form-group">')
+            output.append('<label class="form-label mt-4" for="%s">%s:</label>' % (name, bound_field.label))
+
+            widget_input_type = getattr(bound_field.widget, 'input_type', None)
+            widget_attrs = ' '.join([f'{k}="{v}"' for k, v in bound_field.widget.attrs.items()])
+            output.append('<input class="form-control" type="%s" name="%s" %s />' % (
+                widget_input_type if widget_input_type else 'text',
+                name,
+                widget_attrs
+            ))
+
+            output.append('%s%s' % (bound_field, bound_field.help_text))
+            output.append('</div>')
+
+        return ''.join(output)

@@ -95,17 +95,3 @@
     color: white;
     margin-top: 4%;
 }
-
-/* Estilo para a lista ul com a classe list-group */
-ul.list-group {
-    list-style: none; /* Remove marcadores de lista padrão */
-    padding-left: 0; /* Remove o preenchimento à esquerda padrão */
-}
-
-/* Estilo para os itens li com a classe list-group-item */
-li.list-group-item {
-    padding: 10px; /* Adapte conforme necessário */
-    margin-bottom: 5px; /* Adapte conforme necessário */
-    border: 1px solid #ddd; /* Adapte conforme necessário */
-    border-radius: 5px; /* Adapte conforme necessário */
-}
