@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+
+{% block title %}Adicionar Registro{% endblock title %}
+
+{% block container %}
+  <div class="container mt-4">
+    <h1>Adicionar Registro</h1>
+    <form action="{% url 'adicionar_registro' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="nome">Nome:</label>
+          <select class="form-select" id="nome" name="nome">
+            {% for nome in nomes %}
+              <option value="{{ nome.id }}">{{ nome.nome }}</option>
+            {% endfor %}
+          </select><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="setor">Setor:</label>
+          <select class="form-select" id="setor" name="setor">
+            {% for setor in setores %}
+              <option value="{{ setor.id }}">{{ setor.setor }}</option>
+            {% endfor %}
+          </select><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="municipio">Município:</label>
+          <select class="form-select" id="municipio" name="municipio">
+            {% for municipio in municipios %}
+              <option value="{{ municipio.id }}">{{ municipio.municipio }}</option>
+            {% endfor %}
+          </select><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="atividade">Atividade:</label>
+          <select class="form-select" id="atividade" name="atividade">
+            {% for atividade in atividades %}
+              <option value="{{ atividade.id }}">{{ atividade.atividade }}</option>
+            {% endfor %}
+          </select><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="descricao_atividade">Descrição da Atividade:</label>
+          <input class="form-control" type="text" placeholder="Descrição da Atividade..." name="descricao_atividade" required><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="data_recepcao">Data de Recepção:</label>
+          <input class="form-control" type="date" placeholder="Data de Recepção..." name="data_recepcao" required><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="data_inicio">Data de Início:</label>
+          <input class="form-control" type="date" placeholder="Data de Início..." name="data_inicio" required><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="data_fim">Data do Fim:</label>
+          <input class="form-control" type="date" placeholder="Data do Fim..." name="data_fim" required><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="observacao">Observação:</label>
+          <input class="form-control" type="text" placeholder="Observação..." name="observacao" required><br>
+        </fieldset>
+      </div>
+      <div class="form-group">
+        <fieldset>
+          <label class="form-label mt-4" for="status">Status:</label>
+          <select class="form-select" id="status" name="status">
+            {% for choice in status_choices %}
+              <option value="{{ choice }}">{{ choice }}</option>
+            {% endfor %}
+          </select><br>
+        </fieldset>
+      </div>
+      <button type="submit" class="btn btn-primary">Adicionar Registro</button>
+    </form>
+  </div>
+{% endblock container %}

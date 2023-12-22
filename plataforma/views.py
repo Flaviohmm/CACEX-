@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.template import Context
 from weasyprint import HTML
+from .models import RegistroAtividade, Nome, Setor, Municipio, Atividade, Status
 
 import os
 import csv
@@ -11,6 +12,52 @@ import csv
 @login_required(login_url='/auth/login')
 def home(request):
     return render(request, 'home.html')
+
+def visualizar_tabela(request):
+    registros = RegistroAtividade.objects.all()
+    return render(request, 'visualizar_tabela.html', {'registros': registros})
+
+def adicionar_nome(request):
+    if request.method == 'POST':
+        nome = Nome(request.POST.get('nome'))
+        nome.save()
+    return render(request, 'adicionar_nome.html')
+
+def adicionar_setor(request):
+    if request.method == 'POST':
+        setor = Setor(request.POST.get('setor'))
+        setor.save()
+    return render(request, 'adicionar_setor.html')
+
+def adicionar_municipio(request):
+    if request.method == 'POST':
+        municipio = Municipio(request.POST.get('municipio'))
+        municipio.save()
+    return render(request, 'adicionar_municipio.html')
+
+def adicionar_atividade(request):
+    if request.method == 'POST':
+        atividade = Atividade(request.POST.get('atividade'))
+        atividade.save()
+    return render(request, 'adicionar_atividade.html')
+
+def adicionar_registro(request):
+    if request.method == 'POST':
+        nome = Nome.objects.get(id=request.POST.get('nome'))
+        setor = Setor.objects.get(id=request.POST.get('setor'))
+        municipio = Municipio.objects.get(id=request.POST.get('municipio'))
+        atividade = Atividade.objects.get(id=request.POST.get('atividade'))
+        descricao_atividade = request.POST.get('descricao_atividade')
+        data_recepcao = request.POST.get('data_recepcao')
+        data_inicio = request.POST.get('data_inicio')
+        data_fim = request.POST.get('data_fim')
+        observacao = request.POST.get('observacao')
+        status = Status[request.POST.get('status')]
+
+        registro = RegistroAtividade(nome, setor, municipio, atividade, descricao_atividade, data_recepcao, data_inicio, data_fim, observacao, status)
+        registro.save()
+
+    return render(request, 'adicionar_registro.html', {'status_choices': Status.choices, 'nomes': Nome.objects.all(), 'setores': Setor.objects.all(), 'municipios': Municipio.objects.all(), 'atividades': Atividade.objects.all()})
 
 def gerar_relatorio_pdf(request):
     # Renderiza o template

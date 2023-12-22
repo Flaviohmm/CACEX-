@@ -3,9 +3,29 @@
 {% block title %}Home{% endblock title %}
 
 {% block container %}
-  {% include "tabela.html" %}
+  {% include "visualizar_tabela.html" %}
   <div class="m-4">
-    <a href="{% url "gerar_relatorio_pdf" %}" class="btn btn-primary">Gerar Relatório em PDF</a>
+    <h2>Adicionar Novo Registro</h2>
+    <a href="{% url 'adicionar_registro' %}" class="btn btn-primary">Adicionar Novo Registro</a>
+  </div>
+  <div class="m-4">
+    <h2>Adicionar Novo Nome</h2>
+    <a href="{% url 'adicionar_nome' %}" class="btn btn-primary">Adicionar Novo Nome</a>
+  </div>
+  <div class="m-4">
+    <h2>Adicionar Novo Setor</h2>
+    <a href="{% url 'adicionar_setor' %}" class="btn btn-primary">Adicionar Novo Setor</a>
+  </div>
+  <div class="m-4">
+    <h2>Adicionar Novo Município</h2>
+    <a href="{% url 'adicionar_municipio' %}" class="btn btn-primary">Adicionar Novo Município</a>
+  </div>
+  <div class="m-4">
+    <h2>Adicionar Nova Atividade</h2>
+    <a href="{% url 'adicionar_atividade' %}" class="btn btn-primary">Adicionar Nova Atividade</a>
+  </div>
+  <div class="m-4">
+    <a href="{% url 'gerar_relatorio_pdf' %}" class="btn btn-danger">Exportar PDF</a>
     <a href="{% url 'exportar_csv' %}" class="btn btn-success">Exportar CSV</a>
   </div>
 {% endblock container %}
