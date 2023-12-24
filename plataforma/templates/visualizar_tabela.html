@@ -19,42 +19,45 @@
             <div class="card-body">
               <p class="card-text">
                 <div class="table-responsive">
-                  <table class="table table-hover">
+                  <table class='table table-hover'>
                     <thead>
-                      <tr>
-                        <th scope="col">NOME</th>
-                        <th scope="col">SETOR</th>
-                        <th scope="col">MUNICÍPIO</th>
-                        <th scope="col">ATIVIDADE</th>
-                        <th scope="col">DESCRIÇÃO DA ATIVIDADE</th>
-                        <th scope="col">DATA DE RECEPÇÃO</th>
-                        <th scope="col">DATA DE INICIO</th>
-                        <th scope="col">DATA DO FIM</th>
-                        <th scope="col">DURAÇÃO DE DIAS</th>
-                        <th scope="col">OBSERVAÇÃO</th>
-                        <th scope="col">STATUS</th>
-                      </tr>
+                        <tr>
+                          <th scope="col">NOME</th>
+                          <th scope="col">SETOR</th>
+                          <th scope="col">MUNICÍPIO</th>
+                          <th scope="col">ATIVIDADE</th>
+                          <th scope="col">DESCRIÇÃO DA ATIVIDADE</th>
+                          <th scope="col">DATA DE RECEPÇÃO</th>
+                          <th scope="col">DATA DE INICIO</th>
+                          <th scope="col">DATA DO FIM</th>
+                          <th scope="col">DURAÇÃO DE DIAS</th>
+                          <th scope="col">OBSERVAÇÃO</th>
+                          <th scope="col">STATUS</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      
-                      {% for registro in registros %}
-                        <tr>
-                          <td>{{ registro.nome.nome }}</td>
-                          <td>{{ registro.setor.setor }}</td>
-                          <td>{{ registro.municipio.municipio }}</td>
-                          <td>{{ registro.atividade.atividade }}</td>
-                          <td>{{ registro.descricao_atividade }}</td>
-                          <td>{{ registro.data_recepcao }}</td>
-                          <td>{{ registro.data_inicio }}</td>
-                          <td>{{ registro.data_fim }}</td>
-                          <td>{{ registro.duracao_dias }}</td>
-                          <td>{{ registro.observacao }}</td>
-                          <td>{{ registro.status }}</td>
-                        </tr>
-                      {% endfor %}
-                        
+                        {% for registro in registros %}
+                            <tr>
+                                <td>{{ registro.nome.nome }}</td>
+                                <td>{{ registro.setor.setor }}</td>
+                                <td>{{ registro.municipio.municipio }}</td>
+                                <td>{{ registro.atividade.atividade }}</td>
+                                <td>{{ registro.descricao_atividade }}</td>
+                                <td>{{ registro.data_recepcao }}</td>
+                                <td>{{ registro.data_inicio }}</td>
+                                <td>{{ registro.data_fim }}</td>
+                                <td>{{ registro.duracao_dias_uteis }}</td>
+                                <td>{{ registro.observacao }}</td>
+                                <td>{{ registro.status }}</td>
+                            </tr>
+                        {% endfor %}
                     </tbody>
                   </table>
+                  {% if registros %}
+                    <p>registros está sendo passado corretamente.</p>
+                  {% else %}
+                    <p>registros está vazio ou não está sendo passado corretamente.</p>
+                  {% endif %}
                 </div>
               </p>
             </div>

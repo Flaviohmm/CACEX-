@@ -1,4 +1,20 @@
 from django.db import models
+from datetime import datetime, timedelta
+
+# Função para calcular a diferença em dias úteis
+def dias_uteis(start_date, end_date):
+    count = 0
+    current_date = start_date
+    
+    while current_date <= end_date:
+        # Verificar se o dia da semana não é sabado (5) ou domigo (6)
+        if current_date.weekday() < 5:
+            count += 1
+            
+        # Avançar para o próximo dia
+        current_date += timedelta(days=1)
+        
+    return count
 
 class Nome(models.Model):
     nome = models.CharField(max_length=100)
@@ -25,11 +41,11 @@ class Atividade(models.Model):
         return self.atividade
     
 class Status(models.TextChoices):
-    NAO_INICIADO = "Não iniciado", "Não iniciado"
-    EM_ANALISE = "Em análise", "Em análise"
-    PENDENTE = "Pendente", "Pendente"
-    CONCLUIDO = "Concluído", "Concluído"
-    SUSPENSO = "Suspenso", "Suspenso"
+    NAO_INICIADO = "Não Iniciado"
+    EM_ANALISE = "Em Análise"
+    PENDENTE = "Pendente"
+    CONCLUIDO = "Concluído"
+    SUSPENSO = "Suspenso"
 
 class RegistroAtividade(models.Model):
     nome = models.ForeignKey(Nome, on_delete=models.CASCADE)
@@ -44,11 +60,17 @@ class RegistroAtividade(models.Model):
     status = models.CharField(max_length=20, choices=Status.choices)
 
     @property
-    def duracao_dias(self):
-        return (self.data_fim - self.data_inicio).days
+    def duracao_dias_uteis(self):
+        start_date = self.data_inicio
+        end_date = self.data_fim
+        
+        # Calcular a diferença em dias úteis
+        business_days = dias_uteis(start_date, end_date)
+        
+        return business_days
     
     def __str__(self):
-        return f"{self.nome} | {self.setor} | {self.municipio} | {self.atividade} | {self.descricao_atividade} | {self.data_recepcao} | {self.data_inicio} | {self.data_fim} | {self.duracao_dias} | {self.observacao} | {self.status}"
+        return f"{self.nome.nome} | {self.setor.setor} | {self.municipio.municipio} | {self.atividade.atividade} | {self.descricao_atividade} | {self.data_recepcao} | {self.data_inicio} | {self.data_fim} | {self.duracao_dias_uteis} | {self.observacao} | {self.status}"
     
     
     

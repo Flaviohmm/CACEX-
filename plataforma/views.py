@@ -1,47 +1,61 @@
+import re
+import pandas as pd
+from unidecode import unidecode
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.template.loader import get_template
 from django.template import Context
+from django.views.decorators.http import require_POST
 from weasyprint import HTML
 from .models import RegistroAtividade, Nome, Setor, Municipio, Atividade, Status
 
 import os
 import csv
+import logging
+
+logger = logging.getLogger(__name__)
 
 @login_required(login_url='/auth/login')
 def home(request):
-    return render(request, 'home.html')
-
-def visualizar_tabela(request):
     registros = RegistroAtividade.objects.all()
-    return render(request, 'visualizar_tabela.html', {'registros': registros})
+    return render(request, 'home.html', {'registros': registros})
 
 def adicionar_nome(request):
     if request.method == 'POST':
-        nome = Nome(request.POST.get('nome'))
-        nome.save()
+        nome = request.POST.get('nome')
+        Nome.objects.create(nome=nome)
+        return redirect('home')
+    
     return render(request, 'adicionar_nome.html')
 
 def adicionar_setor(request):
     if request.method == 'POST':
-        setor = Setor(request.POST.get('setor'))
-        setor.save()
+        setor = request.POST.get('setor')
+        Setor.objects.create(setor=setor)
+        return redirect('home')
+    
     return render(request, 'adicionar_setor.html')
 
 def adicionar_municipio(request):
     if request.method == 'POST':
-        municipio = Municipio(request.POST.get('municipio'))
-        municipio.save()
+        municipio = request.POST.get('municipio')
+        Municipio.objects.create(municipio=municipio)
+        return redirect('home')
+    
     return render(request, 'adicionar_municipio.html')
 
 def adicionar_atividade(request):
     if request.method == 'POST':
-        atividade = Atividade(request.POST.get('atividade'))
-        atividade.save()
+        atividade = request.POST.get('atividade')
+        Atividade.objects.create(atividade=atividade)
+        return redirect('home')
+    
     return render(request, 'adicionar_atividade.html')
 
 def adicionar_registro(request):
+    registros = RegistroAtividade.objects.all()
+    
     if request.method == 'POST':
         nome = Nome.objects.get(id=request.POST.get('nome'))
         setor = Setor.objects.get(id=request.POST.get('setor'))
@@ -52,17 +66,54 @@ def adicionar_registro(request):
         data_inicio = request.POST.get('data_inicio')
         data_fim = request.POST.get('data_fim')
         observacao = request.POST.get('observacao')
-        status = Status[request.POST.get('status')]
+        
+        status_str = request.POST.get('status')  # Obtenha o valor do campo 'status'
 
-        registro = RegistroAtividade(nome, setor, municipio, atividade, descricao_atividade, data_recepcao, data_inicio, data_fim, observacao, status)
+        # Remova a acentuação e converta para maiúsculas
+        status_str_clean = unidecode(status_str).upper()
+
+        # Use expressão regular para remover caracteres não alfanuméricos
+        status_str_clean = re.sub(r'[^a-zA-Z0-9]', '', status_str_clean)
+
+        # Mapeie variações possíveis para os valores padrão da enumeração Status
+        status_mapping = {
+            'NAOINICIADONAOINICIADO': 'Não Iniciado',
+            'EMANALISEEMANALISE': 'Em Análise',
+            'PENDENTEPENDENTE': 'Pendente',
+            'CONCLUIDOCONCLUIDO': 'Concluído',
+            'SUSPENSOSUSPENSO': 'Suspenso',
+        }
+
+        # Obtenha o valor correspondente ou 'Desconhecido' se não houver correspondência
+        status = status_mapping.get(status_str_clean, 'Desconhecido')
+
+        registro = RegistroAtividade(
+            nome=nome, 
+            setor=setor, 
+            municipio=municipio, 
+            atividade=atividade, 
+            descricao_atividade=descricao_atividade, 
+            data_recepcao=data_recepcao, 
+            data_inicio=data_inicio, 
+            data_fim=data_fim, 
+            observacao=observacao, 
+            status=status
+        )
         registro.save()
 
-    return render(request, 'adicionar_registro.html', {'status_choices': Status.choices, 'nomes': Nome.objects.all(), 'setores': Setor.objects.all(), 'municipios': Municipio.objects.all(), 'atividades': Atividade.objects.all()})
+    return render(request, 'adicionar_registro.html', {'status_choices': Status.choices, 'nomes': Nome.objects.all(), 'setores': Setor.objects.all(), 'municipios': Municipio.objects.all(), 'atividades': Atividade.objects.all(), 'registros': registros})
+
+def visualizar_tabela(request):
+    registros = RegistroAtividade.objects.all()
+    
+    return render(request, 'visualizar_tabela.html', {'registros': registros})
 
 def gerar_relatorio_pdf(request):
+    registros = RegistroAtividade.objects.all()
+    
     # Renderiza o template
-    template = get_template('tabela.html')
-    html_content = template.render()
+    template = get_template('visualizar_tabela.html')
+    html_content = template.render({'registros': registros})
 
     # Configuração do PDF usando weasyprint e estilos externos
     views_dir = os.path.dirname(os.path.abspath(__file__))
