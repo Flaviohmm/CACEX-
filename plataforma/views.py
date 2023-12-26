@@ -13,6 +13,7 @@ from .models import RegistroAtividade, Nome, Setor, Municipio, Atividade, Status
 import os
 import csv
 import logging
+import subprocess
 
 logger = logging.getLogger(__name__)
 
@@ -157,3 +158,9 @@ def exportar_csv(request):
         ])
 
     return response
+
+def run_streamlit(request):
+    # Certifique-se de que o comando está apontando para o script correto do Streamlit
+    subprocess.run(["streamlit", "run", "plataforma/streamlit_views.py"])
+
+    return HttpResponse(request, 'streamlit_template.html')

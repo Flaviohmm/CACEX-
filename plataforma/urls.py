@@ -1,5 +1,5 @@
 from django.urls import path
-from . import views
+from . import views, streamlit_views
 
 
 urlpatterns = [
@@ -12,4 +12,6 @@ urlpatterns = [
     path('visualizar_tabela/', views.visualizar_tabela, name='visualizar_tabela'),
     path('gerar_relatorio_pdf/', views.gerar_relatorio_pdf, name='gerar_relatorio_pdf'),
     path('exportar_csv/', views.exportar_csv, name='exportar_csv'),
+    path('dashboard/', streamlit_views.main, name='streamlit_dashboard'),
+    path('run_streamlit/', views.run_streamlit, name='run_streamlit'),
 ]
