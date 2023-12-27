@@ -1,4 +1,6 @@
-#!/home/flavio/Documentos/django-projects/cacex/venv/bin/python
+#!/bin/sh
+'''exec' "/home/flavio/Documentos/CACEX v3.5/cacex/venv/bin/python" "$0" "$@"
+' '''
 # -*- coding: utf-8 -*-
 import re
 import sys

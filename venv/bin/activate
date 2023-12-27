@@ -1,13 +1,76 @@
-Script started on 2023-12-26 09:36:42-03:00 [TERM="xterm-256color" TTY="/dev/pts/12" COLUMNS="100" LINES="10"]
-[1m[7m%[27m[1m[0m                                                                                                    ]2;flavio@fedora:~/Documentos/django-projects/cacex]1;..rojects/cacex]7;file://fedora/home/flavio/Documentos/django-projects/cacex\[0m[27m[24m[J[1m[33mflavio[0m[33m[39m[1m [0m[1min [0m[1m[36mcacex[0m[36m[39m[1m [0m[1m[37m
-[0m[37m[39m[1m[32m❯[0m[32m[39m[1m [0m[K[97C[1A[1B[97D[?1h=[?2004h[A[0m[27m[24m[J[1m[33mflavio[0m[33m[39m[1m [0m[1min [0m[1m[36mcacex[0m[36m[39m[1m [0m[1mon [0m[1m[37m[1m[37m[35m master[0m[35m[39m[1m[31m [!?][0m[31m[39m[0m[39m[1m [0m[1m[37m
-[0m[37m[39m[1m[32m❯[0m[32m[39m[1m [0m[K[97C[1A[1B[97Dl[32ml[39m[32ml[39m[90ms[39m[32ml[32ms[39m[?1l>[?2004l
-]2;ls --color=tty]1;ls[0m[34;42mautenticar[0m  [34;42mcacex[0m  [01;32mdb.sqlite3[0m  [01;32mmanage.py[0m  [34;42mplataforma[0m  [34;42mtemplates[0m  [01;34mvenv[0m
-[1m[7m%[27m[1m[0m                                                                                                    ]2;flavio@fedora:~/Documentos/django-projects/cacex]1;..rojects/cacex]7;file://fedora/home/flavio/Documentos/django-projects/cacex\[0m[27m[24m[J[1m[33mflavio[0m[33m[39m[1m [0m[1min [0m[1m[36mcacex[0m[36m[39m[1m [0m[1m[37m
-[0m[37m[39m[1m[32m❯[0m[32m[39m[1m [0m[K[97C[1A[1B[97D[?1h=[?2004h[A[0m[27m[24m[J[1m[33mflavio[0m[33m[39m[1m [0m[1min [0m[1m[36mcacex[0m[36m[39m[1m [0m[1mon [0m[1m[37m[1m[37m[35m master[0m[35m[39m[1m[31m [!?][0m[31m[39m[0m[39m[1m [0m[1m[37m
-[0m[37m[39m[1m[32m❯[0m[32m[39m[1m [0m[K[97C[1A[1B[97Ds[1m[31ms[0m[39m[1m[31ms[0m[39m[90mudo nano .zshrc[39m[15D[1m[31ms[1m[31mo[0m[39m[39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [39m [14D[90murce venv/bin/activate[39m[22D[39mu[39mr[39mc[39me[39m [39mv[39me[39mn[39mv[39m/[39mb[39mi[39mn[39m/[39ma[39mc[39mt[39mi[39mv[39ma[39mt[39me[24D[0m[32ms[0m[32mo[32mu[32mr[32mc[32me[39m [4mv[4me[4mn[4mv[4m/[4mb[4mi[4mn[4m/[4ma[4mc[4mt[4mi[4mv[4ma[4mt[4me[24m[?1l>[?2004l
-]2;source venv/bin/activate]1;source[1m[7m%[27m[1m[0m                                                                                                    ]2;flavio@fedora:~/Documentos/django-projects/cacex]1;..rojects/cacex]7;file://fedora/home/flavio/Documentos/django-projects/cacex\[0m[27m[24m[J[1m[33mflavio[0m[33m[39m[1m [0m[1min [0m[1m[36mcacex[0m[36m[39m[1m [0m[1m[37m
-[0m[37m[39m[1m[32m❯[0m[32m[39m[1m [0m[K[97C[1A[1B[97D[?1h=[?2004h[A[0m[27m[24m[J[1m[33mflavio[0m[33m[39m[1m [0m[1min [0m[1m[36mcacex[0m[36m[39m[1m [0m[1mon [0m[1m[37m[1m[37m[35m master[0m[35m[39m[1m[31m [!?][0m[31m[39m[0m[39m[1m [0m[1m[37m
-[0m[37m[39m[1m[32m❯[0m[32m[39m[1m [0m[K[97C[1A[1B[97Dsource venv/bin/activate[24D[32ms[32mo[32mu[32mr[32mc[32me[39m [4mv[4me[4mn[4mv[4m/[4mb[4mi[4mn[4m/[4ma[4mc[4mt[4mi[4mv[4ma[4mt[4me[24m[?1l>[?2004l
-]2;source venv/bin/activate]1;source[1m[7m%[27m[1m[0m                                                                                                    ]2;flavio@fedora:~/Documentos/django-projects/cacex]1;..rojects/cacex]7;file://fedora/home/flavio/Documentos/django-projects/cacex\[0m[27m[24m[J[1m[33mflavio[0m[33m[39m[1m [0m[1min [0m[1m[36mcacex[0m[36m[39m[1m [0m[1m[37m
-[0m[37m[39m[1m[32m❯[0m[32m[39m[1m [0m[K[97C[1A[1B[97D[?1h=[?2004h[A[0m[27m[24m[J[1m[33mflavio[0m[33m[39m[1m [0m[1min [0m[1m[36mcacex[0m[36m[39m[1m [0m[1mon [0m[1m[37m[1m[37m[35m master[0m[35m[39m[1m[31m [!?][0m[31m[39m[0m[39m[1m [0m[1m[37m
+# This file must be used with "source bin/activate" *from bash*
+# You cannot run it directly
+
+deactivate () {
+    # reset old environment variables
+    if [ -n "${_OLD_VIRTUAL_PATH:-}" ] ; then
+        PATH="${_OLD_VIRTUAL_PATH:-}"
+        export PATH
+        unset _OLD_VIRTUAL_PATH
+    fi
+    if [ -n "${_OLD_VIRTUAL_PYTHONHOME:-}" ] ; then
+        PYTHONHOME="${_OLD_VIRTUAL_PYTHONHOME:-}"
+        export PYTHONHOME
+        unset _OLD_VIRTUAL_PYTHONHOME
+    fi
+
+    # This should detect bash and zsh, which have a hash command that must
+    # be called to get it to forget past commands.  Without forgetting
+    # past commands the $PATH changes we made may not be respected
+    if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
+        hash -r 2> /dev/null
+    fi
+
+    if [ -n "${_OLD_VIRTUAL_PS1:-}" ] ; then
+        PS1="${_OLD_VIRTUAL_PS1:-}"
+        export PS1
+        unset _OLD_VIRTUAL_PS1
+    fi
+
+    unset VIRTUAL_ENV
+    unset VIRTUAL_ENV_PROMPT
+    if [ ! "${1:-}" = "nondestructive" ] ; then
+    # Self destruct!
+        unset -f deactivate
+    fi
+}
+
+# unset irrelevant variables
+deactivate nondestructive
+
+# on Windows, a path can contain colons and backslashes and has to be converted:
+if [ "$OSTYPE" = "cygwin" ] || [ "$OSTYPE" = "msys" ] ; then
+    # transform D:\path\to\venv to /d/path/to/venv on MSYS
+    # and to /cygdrive/d/path/to/venv on Cygwin
+    export VIRTUAL_ENV=$(cygpath "/home/flavio/Documentos/CACEX v3.5/cacex/venv")
+else
+    # use the path as-is
+    export VIRTUAL_ENV="/home/flavio/Documentos/CACEX v3.5/cacex/venv"
+fi
+
+_OLD_VIRTUAL_PATH="$PATH"
+PATH="$VIRTUAL_ENV/bin:$PATH"
+export PATH
+
+# unset PYTHONHOME if set
+# this will fail if PYTHONHOME is set to the empty string (which is bad anyway)
+# could use `if (set -u; : $PYTHONHOME) ;` in bash
+if [ -n "${PYTHONHOME:-}" ] ; then
+    _OLD_VIRTUAL_PYTHONHOME="${PYTHONHOME:-}"
+    unset PYTHONHOME
+fi
+
+if [ -z "${VIRTUAL_ENV_DISABLE_PROMPT:-}" ] ; then
+    _OLD_VIRTUAL_PS1="${PS1:-}"
+    PS1="(venv) ${PS1:-}"
+    export PS1
+    VIRTUAL_ENV_PROMPT="(venv) "
+    export VIRTUAL_ENV_PROMPT
+fi
+
+# This should detect bash and zsh, which have a hash command that must
+# be called to get it to forget past commands.  Without forgetting
+# past commands the $PATH changes we made may not be respected
+if [ -n "${BASH:-}" -o -n "${ZSH_VERSION:-}" ] ; then
+    hash -r 2> /dev/null
+fi
